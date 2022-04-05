@@ -13,4 +13,4 @@ createApp(App)
     size: "medium",
     locale: zhCn,
   })
-  .mount("#app");
+  .mount("#app")
