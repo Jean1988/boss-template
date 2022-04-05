@@ -8,13 +8,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run lint"
+      "pre-commit": "lint-staged --allow-empty"
     }
- },
- "lint-staged": {
-   "src/**/*.{js,vue}": [
-     "npm run lint"
+  },
+  "lint-staged": {
+    "*.{vue,ts,js}": [
+      "eslint --fix"
     ]
   },
   "dependencies": {
