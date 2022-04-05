@@ -4,16 +4,17 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "eslint --ext .js,.vue src --fix"
+    "lint": "vue-cli-service lint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
     }
-  },
-  "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "npm run lint"
+ },
+ "lint-staged": {
+   "src/**/*.{js,vue}": [
+     "npm run lint"
     ]
   },
   "dependencies": {
@@ -44,9 +45,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "husky": "^7.0.4",
-    "install": "^0.13.0",
     "lint-staged": "^12.3.7",
-    "npm": "^8.6.0",
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
