@@ -7,6 +7,8 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
@@ -14,13 +16,17 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "element-plus/global"
+      "element-plus/global",
     ],
     "paths": {
       "@/*": [
         "src/*"
       ]
     },
+    "typeRoots": [
+      "./src/typings",
+      "./node_modules/@types"
+    ],
     "lib": [
       "esnext",
       "dom",

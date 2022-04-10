@@ -1,30 +1,59 @@
-import "@/styles/element-override.scss"
-import "@/styles/element-theme.scss"
+import "@/utils/public-path"
 import ElementPlus from "element-plus"
 import zhCn from "element-plus/es/locale/lang/zh-cn"
 import { createApp } from "vue"
+import { createRouter, createWebHistory } from "vue-router"
 import App from "./App.vue"
-import router from "./router"
-import store from "./store"
+import { routes } from "./router"
+import store, { storeKey } from "./store"
+import eventBus from "@/utils/emmiter"
 
-createApp(App)
-  .use(store)
-  .use(router)
-  .use(ElementPlus, {
-    size: "medium",
-    locale: zhCn,
+import "@/styles/element-theme.scss"
+import "@/styles/element-override.scss"
+// import "./styles/index.scss"
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { name } = require("../package.json")
+let app: any = null
+let router: any = null
+
+function render(props: { container?: HTMLElement }) {
+  const container = props?.container
+  router = createRouter({
+    history: createWebHistory(`/${name}`),
+    routes,
   })
-  .mount("#app")
+  const el = (container ? container.querySelector("#app") : "#app") as Element | string
+  app = createApp(App)
+    .use(store, storeKey)
+    .use(router)
+    .use(ElementPlus, {
+      size: "medium",
+      locale: zhCn,
+    })
+    .mount(el)
+
+  app.config.globalProperties.$bus = eventBus
+}
+
+// 独立运行
+if (!(window as any).__POWERED_BY_QIANKUN__) {
+  console.log("app独立运行！")
+  render({})
+}
 
 export async function bootstrap() {
   console.log("sub app bootstraped")
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function mount(props: any) {
+export async function mount(props) {
   console.log("props", props)
+  render(props)
 }
 
 export async function unmount() {
-  console.log("sub app unmount")
+  app?.unmount?.()
+  app.$el.innerHTML = ""
+  app = null
+  router = null
 }
