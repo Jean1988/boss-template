@@ -28,6 +28,7 @@ module.exports = defineConfig({
     "vue/attributes-order": "warn",
     "vue/require-prop-types": "error",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": 'error',
     "prettier/prettier": [
       "warn",
       {
