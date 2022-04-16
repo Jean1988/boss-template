@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import "@/utils/public-path"
 import ElementPlus from "element-plus"
 import zhCn from "element-plus/es/locale/lang/zh-cn"
@@ -7,7 +6,6 @@ import { createRouter, createWebHistory, Router } from "vue-router"
 import App from "./App.vue"
 import { routes } from "./router"
 import store, { storeKey } from "./store"
-import eventBus from "@/utils/emmiter"
 
 import "@/styles/element-theme.scss"
 import "@/styles/element-override.scss"
@@ -28,13 +26,10 @@ function render(props: { container?: HTMLElement; data?: any }) {
   })
 
   const dom = container ? container.querySelector("#app") : "#app"
-  app = createApp(App)
-    .use(store, storeKey)
-    .use(router)
-    .use(ElementPlus, {
-      size: "medium",
-      locale: zhCn,
-    })
+  app = createApp(App).use(store, storeKey).use(router).use(ElementPlus, {
+    size: "medium",
+    locale: zhCn,
+  })
 
   app.config.globalProperties.$parentRouter = parantRouter
   app.mount(dom as string | Element)
@@ -42,7 +37,7 @@ function render(props: { container?: HTMLElement; data?: any }) {
 
 // 独立运行
 if (!(window as any).__POWERED_BY_QIANKUN__) {
-  console.log('app独立运行!')
+  console.log("app独立运行!")
   render({})
 }
 

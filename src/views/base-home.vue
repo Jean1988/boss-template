@@ -1,5 +1,6 @@
 <template>
-  <h2 class="hello">
+  <h2 id="demo"
+      class="hello">
     {{ print }}
   </h2>
 </template>
