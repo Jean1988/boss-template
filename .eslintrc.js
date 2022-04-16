@@ -17,55 +17,20 @@ module.exports = defineConfig({
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "linebreak-style": [0, "unix"], //换行风格
+    "no-unused-vars": "off",
+    "space-before-function-paren": 0,
+    "no-extra-semi": "off",
+    "no-undef": "off",
     "sort-imports": "off",
     "sort-vars": "off",
+    "vue/html-indent": "off",
     "vue/attributes-order": "warn",
+    "vue/require-prop-types": "error",
     "@typescript-eslint/no-explicit-any": "off",
-
-    // "vue/html-indent": [
-    //   "error",
-    //   2,
-    //   {
-    //     attribute: 1,
-    //     baseIndent: 1,
-    //     closeBracket: 0,
-    //     alignAttributesVertically: true,
-    //     ignores: [],
-    //   },
-    // ],
-    // "vue/first-attribute-linebreak": [
-    //   "error",
-    //   {
-    //     singleline: "ignore",
-    //     multiline: "beside",
-    //   },
-    // ],
-    // "vue/max-attributes-per-line": [
-    //   "error",
-    //   {
-    //     singleline: {
-    //       max: 1,
-    //     },
-    //     multiline: {
-    //       max: 1,
-    //     },
-    //   },
-    // ],
-    // "vue/html-closing-bracket-newline": [
-    //   "error",
-    //   {
-    //     singleline: "never",
-    //     multiline: "never",
-    //   },
-    // ],
     "prettier/prettier": [
       "warn",
       {
-        printWidth: 120,
-        tabWidth: 2,
-        semi: false,
-        singleQuote: false,
-        bracketSpacing: true,
         trailingComma: "es5",
       },
     ],

@@ -1,13 +1,7 @@
 <template>
-  <div id="app"
-       class="base-home">
-    <h1 id="123"
-        class="hello"
-        demo="123"
-        :myProp="13">
-      {{ print }}
-    </h1>
-  </div>
+  <h2 class="hello">
+    {{ print }}
+  </h2>
 </template>
 
 <script lang="ts" setup>
@@ -17,9 +11,10 @@ const print = ref("hello, boss!")
 
 <style lang="scss" scoped>
 .hello {
+  font-size: 42px;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 45%;
   transform: translate(-50%, -50%);
 }
 </style>
