@@ -8,7 +8,7 @@ function resolve(dir) {
 module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
-    port: config.port ?? 80,
+    port: config.p ?? 80,
     headers: {
       // 由于主应用和子应用端口不同， 存在跨域
       "Access-Control-Allow-Origin": "*",
