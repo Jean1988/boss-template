@@ -32,6 +32,7 @@ function render(props: { container?: HTMLElement; data?: any }) {
   })
 
   app.config.globalProperties.$parentRouter = parantRouter
+  app.config.globalProperties.$helloWord = name;
   app.mount(dom as string | Element)
 }
 
