@@ -1,13 +1,10 @@
 <template>
-  <h2 id="demo"
-      class="hello">
-    {{ print }}
-  </h2>
+  <h2 id="demo" class="hello">hello, {{ $helloWord }}</h2>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue"
-const print = ref("hello, boss!")
+import { getCurrentInstance } from "vue"
+const { $helloWord } = getCurrentInstance()?.proxy
 </script>
 
 <style lang="scss" scoped>
